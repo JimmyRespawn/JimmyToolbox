@@ -15,6 +15,6 @@ The design language(aka. XAML page) has been partially updated to fit fluent sty
 Jimmy Toolbox: https://www.microsoft.com/store/productId/9WZDNCRDXTF1
 
 # Compile
-Build environment: Visual Studio 2017, Visual Studio 2019+(Remove the Windows Mobile Extensions for the UWP first in order to run it)  
+Build environment: Visual Studio 2022 
 Target version: Windows 10 19H1(18362)+  
 Minimum version: Windows 10 19H1(18362)
