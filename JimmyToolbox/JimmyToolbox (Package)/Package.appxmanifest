@@ -8,8 +8,8 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="47059JimmyLin.39919659E9F27"
-    Publisher="CN=C684D286-A23A-4725-9BEA-70F2E6D63F90"
+    Name="47059JimmyLin.abcabc"
+    Publisher="CN=C684D286-A23A-4725-9BEA-70F2E6D11111"
     Version="3.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="04f0aa1b-0822-4e6a-a0ec-8c977d8be5bc" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
