@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="JimmyToolbox.Views.CurrencyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JimmyToolbox.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource LayerFillColorDefaultBrush}">
+    <ScrollViewer>
+        <Grid Padding="0,0,0,32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="HeaderGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="204" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--<controls:HomePageHeaderImage
+            Grid.RowSpan="2"
+            Height="396"
+            VerticalAlignment="Top" />-->
+                <Image Source="/Assets/CurrencyHeroImage.png" Stretch="UniformToFill" />
+                <Grid Background="Black" Opacity="0.5" />
+                <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+                <StackPanel
+                    Margin="36,0,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <TextBlock
+                        x:Name="smallHeaderSubtitleText"
+                        x:Uid="CurrencyCalculatorTip"
+                        FontSize="18"
+                        Foreground="White"
+                        Opacity="0.8"
+                        Text="Allows you to convert all major world currencies" />
+                    <TextBlock
+                        x:Name="smallHeaderText"
+                        x:Uid="CurrencyCalculator1"
+                        Foreground="White"
+                        Style="{StaticResource TitleLargeTextBlockStyle}"
+                        Text="Currency Calculator" />
+                </StackPanel>
+            </Grid>
+            <StackPanel
+                Grid.Row="1"
+                Width="320"
+                Margin="36,28,0,0"
+                Padding="24"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{ThemeResource ButtonBackground}"
+                BorderBrush="{ThemeResource MediaTransportControlsBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+                <TextBlock x:Uid="From" Text="From" />
+                <Grid Margin="0,4,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox
+                        x:Name="SourceCurrencyComboBox"
+                        Margin="0,0,8,0"
+                        SelectionChanged="SourceCurrencyComboBox_SelectionChanged">
+                        <ComboBoxItem Content="USD" />
+                        <ComboBoxItem Content="AUD" />
+                        <ComboBoxItem Content="BGN" />
+                        <ComboBoxItem Content="BRL" />
+                        <ComboBoxItem Content="CAD" />
+                        <ComboBoxItem Content="CHF" />
+                        <ComboBoxItem Content="CNY" />
+                        <ComboBoxItem Content="CZK" />
+                        <ComboBoxItem Content="DKK" />
+                        <ComboBoxItem Content="EUR" />
+                        <ComboBoxItem Content="GBP" />
+                        <ComboBoxItem Content="HKD" />
+                        <ComboBoxItem Content="HUF" />
+                        <ComboBoxItem Content="IDR" />
+                        <ComboBoxItem Content="ILS" />
+                        <ComboBoxItem Content="INR" />
+                        <ComboBoxItem Content="ISK" />
+                        <ComboBoxItem Content="JPY" />
+                        <ComboBoxItem Content="KRW" />
+                        <ComboBoxItem Content="MXN" />
+                        <ComboBoxItem Content="MYR" />
+                        <ComboBoxItem Content="NOK" />
+                        <ComboBoxItem Content="NZD" />
+                        <ComboBoxItem Content="PHP" />
+                        <ComboBoxItem Content="PLN" />
+                        <ComboBoxItem Content="RON" />
+                        <ComboBoxItem Content="SEK" />
+                        <ComboBoxItem Content="SGD" />
+                        <ComboBoxItem Content="THB" />
+                        <ComboBoxItem Content="TRY" />
+                        <ComboBoxItem Content="ZAR" />
+                    </ComboBox>
+                    <TextBox
+                        x:Name="SourceCurrencyTextBox"
+                        Grid.Column="1"
+                        InputScope="Digits"
+                        PlaceholderText="100" />
+                </Grid>
+                <TextBlock
+                    x:Uid="To"
+                    Margin="0,16,0,0"
+                    Text="To" />
+                <Grid Margin="0,4,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox
+                        x:Name="TargetCurrencyComboBox"
+                        Margin="0,0,8,0"
+                        SelectionChanged="TargetCurrencyComboBox_SelectionChanged">
+                        <ComboBoxItem Content="CNY" />
+                        <ComboBoxItem Content="USD" />
+                        <ComboBoxItem Content="AUD" />
+                        <ComboBoxItem Content="BGN" />
+                        <ComboBoxItem Content="BRL" />
+                        <ComboBoxItem Content="CAD" />
+                        <ComboBoxItem Content="CHF" />
+                        <ComboBoxItem Content="CZK" />
+                        <ComboBoxItem Content="DKK" />
+                        <ComboBoxItem Content="EUR" />
+                        <ComboBoxItem Content="GBP" />
+                        <ComboBoxItem Content="HKD" />
+                        <ComboBoxItem Content="HUF" />
+                        <ComboBoxItem Content="IDR" />
+                        <ComboBoxItem Content="ILS" />
+                        <ComboBoxItem Content="INR" />
+                        <ComboBoxItem Content="ISK" />
+                        <ComboBoxItem Content="JPY" />
+                        <ComboBoxItem Content="KRW" />
+                        <ComboBoxItem Content="MXN" />
+                        <ComboBoxItem Content="MYR" />
+                        <ComboBoxItem Content="NOK" />
+                        <ComboBoxItem Content="NZD" />
+                        <ComboBoxItem Content="PHP" />
+                        <ComboBoxItem Content="PLN" />
+                        <ComboBoxItem Content="RON" />
+                        <ComboBoxItem Content="SEK" />
+                        <ComboBoxItem Content="SGD" />
+                        <ComboBoxItem Content="THB" />
+                        <ComboBoxItem Content="TRY" />
+                        <ComboBoxItem Content="ZAR" />
+                    </ComboBox>
+                    <TextBox
+                        x:Name="RMBResultTextBox"
+                        Grid.Column="1"
+                        InputScope="Digits"
+                        PlaceholderText="" />
+                </Grid>
+                <Border
+                    Height="1"
+                    Margin="-24,24,-24,0"
+                    HorizontalAlignment="Stretch"
+                    Background="{ThemeResource MediaTransportControlsBorderBrush}" />
+                <ProgressBar
+                    x:Name="ProgressBar1"
+                    Margin="-24,0,-24,24"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Background="Transparent" />
+                <Button
+                    x:Name="TransformMoneyButton"
+                    Margin="0,0,0,-4"
+                    Click="TransformMoneyButton_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="-4,0,4,0" Text="💱" />
+                            <TextBlock x:Uid="Convert" Text="Convert" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

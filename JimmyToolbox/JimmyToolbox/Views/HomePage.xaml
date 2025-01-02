@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="JimmyToolbox.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:JimmyToolbox.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource LayerFillColorDefaultBrush}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="SettingsSectionHeaderTextBlockStyle"
+                BasedOn="{StaticResource BodyTextBlockStyle}"
+                TargetType="TextBlock">
+                <Style.Setters>
+                    <Setter Property="Margin" Value="0,28,0,4" />
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                </Style.Setters>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="HeaderGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="204" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--<controls:HomePageHeaderImage
+            Grid.RowSpan="2"
+            Height="396"
+            VerticalAlignment="Top" />-->
+                <Image Source="/Assets/GalleryHeaderImage.png" Stretch="UniformToFill" />
+                <Grid Background="Black" Opacity="0.3" />
+                <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+                <StackPanel
+                    Margin="36,0,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <TextBlock
+                        x:Name="smallHeaderSubtitleText"
+                        FontSize="18"
+                        Foreground="White"
+                        Opacity="0.8"
+                        Text="Handful toolsets for desktop" />
+                    <TextBlock
+                        x:Name="smallHeaderText"
+                        Foreground="White"
+                        Style="{StaticResource TitleLargeTextBlockStyle}"
+                        Text="Jimmy Toolbox" />
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.Row="1" VerticalAlignment="Top">
+                <TextBlock
+                    x:Uid="Overview"
+                    Padding="36,0,0,0"
+                    Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                    Text="Overview" />
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Hidden"
+                    HorizontalScrollMode="Enabled"
+                    VerticalScrollBarVisibility="Hidden"
+                    VerticalScrollMode="Disabled">
+                    <StackPanel
+                        Margin="0,4,0,24"
+                        Padding="36,0,16,0"
+                        HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="LetterCounterButton"
+                            Height="72"
+                            Click="LetterCounterButton_Click">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="🧮" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            x:Uid="LetterCounter1"
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Letter Counter"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            x:Uid="LetterCounterTip"
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Provides accurate counts for words, characters."
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            x:Name="WOLButton"
+                            Height="72"
+                            Margin="16,0"
+                            Click="WOLButton_Click">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="🖥️" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            x:Uid="WOL1"
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Wake on Lan"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            x:Uid="WOLTip"
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Allows a computer to be turned on from sleep mode."
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            x:Name="CurrentcyConverterButton"
+                            Height="72"
+                            Click="CurrentcyConverterButton_Click">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="💱" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            x:Uid="CurrencyCalculator1"
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Currency Calculator"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            x:Uid="CurrencyCalculatorTip"
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Allows you to convert all major world currencies."
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            x:Name="ChineseConverterButton"
+                            Height="72"
+                            Margin="16,0,0,0"
+                            Click="ChineseConverterButton_Click">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="🀄" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            x:Uid="ChineseConverter"
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Chinese Converter"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Conversion between Traditional and Simplified Chinese."
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+                <TextBlock
+                    x:Uid="ComingSoon"
+                    Padding="36,0,0,0"
+                    Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                    Text="Coming soon" />
+
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Hidden"
+                    HorizontalScrollMode="Enabled"
+                    VerticalScrollBarVisibility="Hidden"
+                    VerticalScrollMode="Disabled">
+                    <StackPanel
+                        Margin="0,4,0,24"
+                        Padding="36,0,16,0"
+                        HorizontalAlignment="Left"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="GameLauncherButton"
+                            Height="72"
+                            Click="GameLauncherButton_Click"
+                            IsHitTestVisible="False">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="🎮" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Game Launcher"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Gamehub for XGP, Steam, Epic games etc."
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            x:Name="WebpageButton"
+                            Height="72"
+                            Margin="16,0"
+                            Click="WebpageButton_Click"
+                            IsHitTestVisible="False">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="🌏" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Website bookmarks"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Provides browser bookmarks management."
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            Height="72"
+                            Click="CurrentcyConverterButton_Click"
+                            IsHitTestVisible="False">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="🗒️" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Scripts Launcher"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Run CMD or powershell scripts."
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            Height="72"
+                            Margin="16,0,0,0"
+                            IsHitTestVisible="False">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="🔌" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Shutdown Timer"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Shutdown computer in specific time."
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <TextBlock
+                    x:Uid="Feedback"
+                    Padding="36,0,0,0"
+                    Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                    Text="Feedback" />
+
+                <Button
+                    x:Name="IdeaButton"
+                    Height="72"
+                    Margin="36,4,0,0"
+                    Click="IdeaButton_Click">
+                    <Button.Content>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="📬" />
+                            <!--  F08C  -->
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="4,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    x:Uid="Feedback"
+                                    HorizontalAlignment="Left"
+                                    Style="{StaticResource BodyTextBlockStyle}"
+                                    Text="Feedback"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                                <TextBlock
+                                    Margin="0,2,6,0"
+                                    HorizontalAlignment="Left"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Thoughts on more cool ideas."
+                                    TextTrimming="CharacterEllipsis" />
+                            </StackPanel>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <TextBlock
+                    Margin="36,28,0,16"
+                    VerticalAlignment="Bottom"
+                    IsTextSelectionEnabled="True"
+                    Text="©  JimmyRespawn. All rights Reserved." />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

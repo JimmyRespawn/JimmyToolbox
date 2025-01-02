@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="JimmyToolbox.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:JimmyToolbox"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="JimmyToolbox"
+    mc:Ignorable="d">
+    <Window.SystemBackdrop>
+        <MicaBackdrop Kind="BaseAlt" />
+    </Window.SystemBackdrop>
+    <Grid MinWidth="360" MinHeight="500">
+        <Border
+            x:Name="AppTitleBar"
+            Height="40"
+            Padding="0,8,0,0"
+            VerticalAlignment="Top"
+            Canvas.ZIndex="1"
+            IsHitTestVisible="True">
+            <StackPanel Orientation="Horizontal">
+                <Image
+                    x:Name="AppFontIcon"
+                    Width="16"
+                    Height="16"
+                    Margin="8,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    AutomationProperties.Name="App Icon"
+                    Source="Assets/icon.ico"
+                    Visibility="Collapsed" />
+                <TextBlock
+                    x:Name="AppTitle"
+                    x:Uid="AppName"
+                    VerticalAlignment="Center"
+                    Text="Jimmy Toolbox"
+                    Visibility="Collapsed" />
+            </StackPanel>
+        </Border>
+        <NavigationView
+            x:Name="NavigationViewControl"
+            Margin="0,-2,0,0"
+            AlwaysShowHeader="False"
+            BackRequested="NavigationViewControl_BackRequested"
+            DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
+            IsBackButtonVisible="Auto"
+            IsSettingsVisible="False"
+            IsTitleBarAutoPaddingEnabled="False"
+            Loaded="NavView_Loaded"
+            PaneDisplayMode="Auto"
+            SelectionChanged="NavigationViewControl_SelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    x:Uid="Home"
+                    AutomationProperties.Name="Homepage"
+                    Content="Home"
+                    Tag="home">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE80F;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItemSeparator />
+                <NavigationViewItem
+                    x:Uid="LetterCounter"
+                    AutomationProperties.Name="Letter Counter"
+                    Content="Letter Counter"
+                    Tag="lettercounter">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE8EF;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Uid="WOL"
+                    AutomationProperties.Name="Wake on Lan"
+                    Content="Wake on Lan"
+                    Tag="wol">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE7E8;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Uid="CurrencyCalculator"
+                    AutomationProperties.Name="Transform currency"
+                    Content="Currency Calculator"
+                    Tag="currency">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE825;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Uid="ChineseConverter1"
+                    AutomationProperties.Name="Simplifield chiense to traditional chiense"
+                    Content="Chinese Converter"
+                    Tag="chinese">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE8C1;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Name="GameHubNVI"
+                    AutomationProperties.Name="Game hub"
+                    Content="Game Launcher"
+                    Tag="gamelauncher"
+                    Visibility="Collapsed">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE7FC;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem
+                    x:Name="WebPageNVI"
+                    AutomationProperties.Name="Web Bookmarks"
+                    Content="Web Bookmarks"
+                    Tag="webbookmarks"
+                    Visibility="Collapsed">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE909;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <Grid Name="MainContentFrame">
+                <Frame
+                    x:Name="ContentFrame"
+                    Grid.Row="1"
+                    Margin="0,-36,0,0"
+                    IsTabStop="False" />
+            </Grid>
+        </NavigationView>
+    </Grid>
+</Window>
