@@ -11,10 +11,12 @@ Jimmy Toolbox is a versatile app designed to simplify your daily tasks with powe
 
 # Code contribution 
 Code behind was written ten years ago. Any pull request is welcome. 
+
 The design language(aka. XAML page) has been partially updated to WinUI 3.  
 
 # Download Link
 Microsoft store: https://www.microsoft.com/store/productId/9WZDNCRDXTF1
+
 Offline package: https://github.com/JimmyRespawn/JimmyToolbox/releases
 
 # Compile
@@ -30,4 +32,5 @@ Minimum version: Windows 10 18h2(17763)
 - **Scheduler**: Run different actions one by one which provided above.
 
 No timeline for the features mentioned above. All these features is designed and coded for my own productivity purposes. 
+
 No warrenty provided by this product.
