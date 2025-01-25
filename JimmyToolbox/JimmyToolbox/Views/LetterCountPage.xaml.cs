@@ -80,13 +80,15 @@ namespace JimmyToolbox.Views
             dataPackage.SetText(copy);
             Clipboard.SetContent(dataPackage);
 
-            PopupContent.Text = _resourceLoader.GetString("Copied");
-            AlertNotification.Begin();
-        }
+            try
+            {
+                PopupContent.Text = _resourceLoader.GetString("Copied");
+            }
+            catch
+            {
 
-        private async void RateButton_Click(object sender, RoutedEventArgs e)
-        {
-            await GeneralHelper.Rate("9WZDNCRDXTF1");
+            }
+            AlertNotification.Begin();
         }
 
         private async void CountButton_Click(object sender, RoutedEventArgs e)
@@ -138,7 +140,15 @@ namespace JimmyToolbox.Views
                 easterEgg++;
                 if (easterEgg == 3)
                 {
-                    myTextBox.Text = _resourceLoader.GetString("EasterEgg");
+                    try
+                    {
+                        if(_resourceLoader != null)
+                            myTextBox.Text = _resourceLoader.GetString("EasterEgg");
+                    }
+                    catch
+                    {
+
+                    }
                     easterEgg = 0;
                 }
             }
@@ -149,18 +159,20 @@ namespace JimmyToolbox.Views
             ClearHisoryCount();
         }
 
-        private void ClearButton_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            ClearHisoryCount();
-        }
-
         private void ClearHisoryCount()
         {
             if (myTextBox.Text != "")
             {
                 backedString = myTextBox.Text;
-                PopupContent.Text = _resourceLoader.GetString("Cleared");
-                AlertNotification.Begin();
+                //try
+                //{
+                //    PopupContent.Text = _resourceLoader.GetString("Cleared");
+                //}
+                //catch
+                //{
+
+                //}
+                //AlertNotification.Begin();
             }
 
             letterNumber.Text = "";
@@ -178,14 +190,16 @@ namespace JimmyToolbox.Views
             {
                 myTextBox.Text = backedString;
                 backedString = "";
-                PopupContent.Text = _resourceLoader.GetString("Restored");
+                try
+                {
+                    PopupContent.Text = _resourceLoader.GetString("Restored");
+                }
+                catch
+                {
+
+                }
                 AlertNotification.Begin();
             }
-        }
-
-        private async void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            await Windows.System.Launcher.LaunchUriAsync(new Uri("https://icons8.com/"));
         }
 
         //Tobe Cleared

@@ -12,32 +12,6 @@
         <MicaBackdrop Kind="BaseAlt" />
     </Window.SystemBackdrop>
     <Grid MinWidth="360" MinHeight="500">
-        <Border
-            x:Name="AppTitleBar"
-            Height="40"
-            Padding="0,8,0,0"
-            VerticalAlignment="Top"
-            Canvas.ZIndex="1"
-            IsHitTestVisible="True">
-            <StackPanel Orientation="Horizontal">
-                <Image
-                    x:Name="AppFontIcon"
-                    Width="16"
-                    Height="16"
-                    Margin="8,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    AutomationProperties.Name="App Icon"
-                    Source="Assets/icon.ico"
-                    Visibility="Collapsed" />
-                <TextBlock
-                    x:Name="AppTitle"
-                    x:Uid="AppName"
-                    VerticalAlignment="Center"
-                    Text="Jimmy Toolbox"
-                    Visibility="Collapsed" />
-            </StackPanel>
-        </Border>
         <NavigationView
             x:Name="NavigationViewControl"
             Margin="0,-2,0,0"
@@ -45,11 +19,14 @@
             BackRequested="NavigationViewControl_BackRequested"
             DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
             IsBackButtonVisible="Auto"
-            IsSettingsVisible="False"
+            IsSettingsVisible="True"
             IsTitleBarAutoPaddingEnabled="False"
             Loaded="NavView_Loaded"
             PaneDisplayMode="Auto"
             SelectionChanged="NavigationViewControl_SelectionChanged">
+            <!--
+                Style="{StaticResource MainNavigationViewStyle}"
+            -->
             <NavigationView.MenuItems>
                 <NavigationViewItem
                     x:Uid="Home"
@@ -76,7 +53,7 @@
                     Content="Wake on Lan"
                     Tag="wol">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE7E8;" />
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE8AF;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem
@@ -117,7 +94,27 @@
                         <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE909;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem
+                    x:Name="ScriptsNVI"
+                    AutomationProperties.Name="Scripts Launcher"
+                    Content="Scripts Launcher"
+                    Tag="scripts"
+                    Visibility="Collapsed">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE943;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem
+                    AutomationProperties.Name="Shut down"
+                    Content="Shutdown"
+                    Tag="shutdown">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" Glyph="&#xE7E8;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
             <Grid Name="MainContentFrame">
                 <Frame
                     x:Name="ContentFrame"
@@ -126,5 +123,31 @@
                     IsTabStop="False" />
             </Grid>
         </NavigationView>
+        <Border
+            x:Name="AppTitleBar"
+            Height="40"
+            Padding="0,8,0,0"
+            VerticalAlignment="Top"
+            Canvas.ZIndex="1"
+            IsHitTestVisible="True">
+            <StackPanel Orientation="Horizontal">
+                <Image
+                    x:Name="AppFontIcon"
+                    Width="16"
+                    Height="16"
+                    Margin="8,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    AutomationProperties.Name="App Icon"
+                    Source="Assets/icon.ico"
+                    Visibility="Collapsed" />
+                <TextBlock
+                    x:Name="AppTitle"
+                    x:Uid="AppName"
+                    VerticalAlignment="Center"
+                    Text="Jimmy Toolbox"
+                    Visibility="Collapsed" />
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

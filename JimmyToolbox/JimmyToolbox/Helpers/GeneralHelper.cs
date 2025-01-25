@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+using System;
 using System.Threading.Tasks;
+using Windows.UI.ViewManagement;
+using Microsoft.UI;
+using JimmyToolbox;
 
 namespace JimmyToolBox.Helpers
 {
@@ -37,6 +42,44 @@ namespace JimmyToolBox.Helpers
             try
             {
                 await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?ProductId=" + StoreProduectID));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async static Task<bool> ThemeSwitchAsync(string theme)
+        {
+            try
+            {
+                Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                localSettings.Values["theme"] = theme;
+                if (theme == "Auto")
+                {
+                    UISettings uiSettings = new UISettings();
+                    var backgroundColor = uiSettings.GetColorValue(UIColorType.Background);
+                    theme = "Light";
+                    if (backgroundColor == Colors.Black)
+                        theme = "Dark";
+                }
+
+                var app = (App)Application.Current;
+                if (theme == "Dark")
+                {
+                    if (app.m_window.Content is FrameworkElement rootElement)
+                        rootElement.RequestedTheme = ElementTheme.Dark; // 或 ElementTheme.Light
+                    //ttb.ForegroundColor = Colors.White;
+                    //ttb.ButtonForegroundColor = Colors.White;
+                }
+                else if (theme == "Light")
+                {
+                    if (app.m_window.Content is FrameworkElement rootElement)
+                        rootElement.RequestedTheme = ElementTheme.Light; // 或 ElementTheme.Light
+                    //ttb.ForegroundColor = Windows.UI.Colors.Black;
+                    //ttb.ButtonForegroundColor = Windows.UI.Colors.Black;
+                }
                 return true;
             }
             catch

@@ -1,3 +1,4 @@
+using JimmyToolbox.Services;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
@@ -14,15 +15,22 @@ namespace JimmyToolbox.Views
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (localSettings.Values.ContainsKey("wolmacaddress"))
-                DeviceMacTextBox.Text = localSettings.Values["wolmacaddress"].ToString();
+            try
+            {
+                if (localSettings.Values.ContainsKey("wolmacaddress"))
+                    DeviceMacTextBox.Text = localSettings.Values["wolmacaddress"].ToString();
+            }
+            catch
+            {
+
+            }
         }
 
         private async void WOLButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(DeviceMacTextBox.Text))
             {
-                bool isAwake = false;// await WakeOnLanService.SendWakeOnLan(DeviceMacTextBox.Text);
+                bool isAwake = await WakeOnLanService.SendWakeOnLan(DeviceMacTextBox.Text);
                 if (isAwake)
                 {
                     localSettings.Values["wolmacaddress"] = DeviceMacTextBox.Text;

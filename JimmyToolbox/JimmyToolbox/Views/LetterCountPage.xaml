@@ -9,6 +9,9 @@
     mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/DesktopTextboxStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Name="AlertNotification">
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PopUp" Storyboard.TargetProperty="(UIElement.Opacity)">
                     <EasingDoubleKeyFrame KeyTime="0" Value="0" />
@@ -46,8 +49,8 @@
             <Grid
                 x:Name="TextBoxGrid"
                 Margin="24,24,24,230"
-                Background="{ThemeResource TextBackgroundBrush}"
-                BorderBrush="{ThemeResource TextBorderBrush}"
+                Background="{ThemeResource ButtonBackground}"
+                BorderBrush="{ThemeResource MediaTransportControlsBorderBrush}"
                 BorderThickness="1"
                 CornerRadius="8"
                 RelativePanel.AlignBottomWithPanel="True"
@@ -70,7 +73,7 @@
                     BorderBrush="Transparent"
                     Click="CopyFullTextButton_Click"
                     Content="&#xE8C8;"
-                    FontFamily="Segoe MDL2 Assets" />
+                    FontFamily="/Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons" />
                 <TextBox
                     x:Name="myTextBox"
                     x:Uid="MyTextBox"
@@ -78,9 +81,11 @@
                     Margin="12,4,12,12"
                     AcceptsReturn="True"
                     AutomationProperties.Name="Input count text here"
-                    Background="{ThemeResource TextBackgroundBrush}"
+                    Background="{ThemeResource ButtonBackground}"
                     BorderThickness="0"
+                    IsSpellCheckEnabled="False"
                     PlaceholderText="Input text here..."
+                    Style="{StaticResource DesktopTextboxStyle}"
                     TextWrapping="Wrap" />
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -109,17 +114,16 @@
                         AutomationProperties.Name="Clear Text"
                         Background="{ThemeResource ButtonBackgroundBrush}"
                         BorderBrush="Transparent"
+                        Click="ClearButton_Click"
                         Content="Clear"
-                        Foreground="{ThemeResource ButtonForegroundColor}"
-                        RightTapped="HoldingToRewind_RightTapped"
-                        Tapped="ClearButton_Tapped" />
+                        RightTapped="HoldingToRewind_RightTapped" />
                 </Grid>
             </Grid>
             <Grid
                 x:Name="ResultGrid"
                 Margin="24"
-                Background="{ThemeResource TextBackgroundBrush}"
-                BorderBrush="{ThemeResource TextBorderBrush}"
+                Background="{ThemeResource ButtonBackground}"
+                BorderBrush="{ThemeResource MediaTransportControlsBorderBrush}"
                 BorderThickness="1"
                 CornerRadius="8"
                 RelativePanel.AlignBottomWithPanel="True"
@@ -130,23 +134,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid Margin="0,8,8,0" HorizontalAlignment="Right">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Button
-                        Name="RateButton"
-                        Width="40"
-                        Height="30"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        Click="RateButton_Click"
-                        Content=""
-                        FontFamily="Segoe MDL2 Assets"
-                        RelativePanel.AlignRightWithPanel="True"
-                        RelativePanel.AlignTopWithPanel="True" />
-                </Grid>
                 <Grid
                     Grid.Row="1"
                     Margin="0,12,0,12"
@@ -169,63 +156,57 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,1,0,0">
+                            <Border>
                                 <TextBlock
                                     x:Uid="Characters"
                                     Margin="12,12,12,3"
                                     HorizontalAlignment="Center"
                                     FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}"
                                     Text="Character" />
 
                             </Border>
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,0,0,0">
+                            <Border>
                                 <TextBlock
                                     Name="letterNumber"
                                     Margin="12,0,12,6"
                                     HorizontalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}" />
+                                    FontSize="15" />
                             </Border>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,1,0,0">
+                            <Border>
                                 <TextBlock
                                     x:Uid="Word"
                                     Margin="12,12,12,3"
                                     HorizontalAlignment="Center"
                                     FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}"
                                     Text="Word" />
 
                             </Border>
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,0,0,0">
+                            <Border>
                                 <TextBlock
                                     Name="englishWordNumber"
                                     Margin="12,0,12,6"
                                     HorizontalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}" />
+                                    FontSize="15" />
                             </Border>
                         </StackPanel>
                         <StackPanel Grid.Column="2">
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,1,1,0">
+                            <Border>
                                 <TextBlock
                                     x:Uid="Punctuation"
                                     Margin="4,12,4,3"
                                     HorizontalAlignment="Center"
                                     FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}"
                                     Text="Punctuation" />
 
                             </Border>
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,0,1,0">
+                            <Border>
                                 <TextBlock
                                     Name="punctuationNumber"
                                     Margin="12,0,12,6"
                                     HorizontalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}" />
+                                    FontSize="15" />
                             </Border>
                         </StackPanel>
                     </Grid>
@@ -236,60 +217,54 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,1,0,0">
+                            <Border>
                                 <TextBlock
                                     x:Uid="Chinese"
                                     Margin="12,12,12,3"
                                     HorizontalAlignment="Center"
                                     FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}"
                                     Text="Chinese" />
                             </Border>
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,0,0,1">
+                            <Border>
                                 <TextBlock
                                     Name="chineseNumber"
                                     Margin="12,0,12,6"
                                     HorizontalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}" />
+                                    FontSize="15" />
                             </Border>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,1,0,0">
+                            <Border>
                                 <TextBlock
                                     x:Uid="English"
                                     Margin="12,12,12,3"
                                     HorizontalAlignment="Center"
                                     FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}"
                                     Text="English" />
                             </Border>
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,0,0,1">
+                            <Border>
                                 <TextBlock
                                     Name="englishNumber"
                                     Margin="12,0,12,6"
                                     HorizontalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}" />
+                                    FontSize="15" />
                             </Border>
                         </StackPanel>
                         <StackPanel Grid.Column="2">
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,1,1,0">
+                            <Border>
                                 <TextBlock
                                     x:Uid="Number"
                                     Margin="12,12,12,3"
                                     HorizontalAlignment="Center"
                                     FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}"
                                     Text="Number" />
                             </Border>
-                            <Border BorderBrush="{ThemeResource CountBorderBrush}" BorderThickness="1,0,1,1">
+                            <Border>
                                 <TextBlock
                                     Name="digitNumber"
                                     Margin="12,0,12,6"
                                     HorizontalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="{ThemeResource CountForegroundBrush}" />
+                                    FontSize="15" />
                             </Border>
                         </StackPanel>
                     </Grid>
@@ -298,22 +273,11 @@
             <Grid
                 x:Name="AboutGrid"
                 Margin="24,8,24,24"
-                Background="{ThemeResource TextBackgroundBrush}"
-                BorderBrush="{ThemeResource TextBorderBrush}"
-                BorderThickness="1"
                 CornerRadius="8"
                 RelativePanel.AlignLeftWith="ResultGrid"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.Below="ResultGrid"
-                Visibility="Collapsed">
-                <TextBlock
-                    x:Uid="LodoDeisngedBy"
-                    Margin="8"
-                    HorizontalAlignment="Center"
-                    FontSize="15"
-                    Tapped="TextBlock_Tapped"
-                    Text="Logo designed by ICONS8" />
-            </Grid>
+                Visibility="Collapsed" />
         </RelativePanel>
         <Grid
             x:Name="PopUp"

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -9,17 +9,27 @@
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
     <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <!-- Publish independent-->
+    <!--<EnableMsixTooling>true</EnableMsixTooling>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>-->
+    <!-- Publish independent end-->
+  </PropertyGroup> 
   <ItemGroup>
     <None Remove="Assets\ChineseHeroImage.webp" />
     <None Remove="Assets\Fonts\Segoe Fluent Icons.ttf" />
-    <None Remove="Assets\icon.ico" />
+    <None Remove="Styles\DesktopTextboxStyle.xaml" />
+    <None Remove="Styles\NavigationView.xaml" />
+    <None Remove="Styles\SettingsButtonStyle.xaml" />
     <None Remove="Views\ChineseConvertPage.xaml" />
     <None Remove="Views\CurrencyPage.xaml" />
     <None Remove="Views\GameHubPage.xaml" />
     <None Remove="Views\HomePage.xaml" />
     <None Remove="Views\LetterCountPage.xaml" />
+    <None Remove="Views\ScriptsPage.xaml" />
     <None Remove="Views\SettingsPage.xaml" />
+    <None Remove="Views\ShutDownPage.xaml" />
     <None Remove="Views\WebPage.xaml" />
     <None Remove="Views\WOLPage.xaml" />
   </ItemGroup>
@@ -32,8 +42,35 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Faithlife.OpenCCNET" Version="0.1.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\NavigationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\ScriptsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\SettingsButtonStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\ShutDownPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
@@ -94,7 +131,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Styles\" />
+    <Page Update="Styles\DesktopTextboxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
     <!-- Publish Properties -->

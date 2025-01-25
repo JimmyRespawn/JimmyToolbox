@@ -5,19 +5,24 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Composition.SystemBackdrops;
 using WinRT.Interop;
-using JimmyToolbox.Views;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Core;
 using Microsoft.UI.Xaml.Navigation;
-using Windows.UI.ViewManagement;
+using Microsoft.UI;           // Needed for WindowId.
+using Microsoft.UI.Windowing;
+using System.Threading;
+using JimmyToolBox.Helpers; // Needed for AppWindow.
+
 
 namespace JimmyToolbox
 {
     public sealed partial class MainWindow : Window
     {
-        private double MinWidth = 480;
+        public static CancellationTokenSource _cancellationTokenSource;
+        private double MinWidth = 640;
         private double MinHeight = 500;
+        private AppWindow m_AppWindow;
 
         public MainWindow()
         {
@@ -27,9 +32,11 @@ namespace JimmyToolbox
                 //Set Header Title
                 this.ExtendsContentIntoTitleBar = true;
                 this.SetTitleBar(AppTitleBar);
+                m_AppWindow = GetAppWindowForCurrentWindow();
+                SetTitleBarColors();
 
                 //Set app icon
-                SetWindowIcon("Assets/icon.ico");
+                SetWindowIcon("Control knobs.ico");
 
                 //Set Background
                 ApplyBackdrop();
@@ -49,12 +56,40 @@ namespace JimmyToolbox
 #if DEBUG
                 GameHubNVI.Visibility = Visibility.Visible;
                 WebPageNVI.Visibility = Visibility.Visible;
+                ScriptsNVI.Visibility = Visibility.Visible;
 #endif
             }
             catch
             {
 
             }
+        }
+
+        private AppWindow GetAppWindowForCurrentWindow()
+        {
+            IntPtr hWnd = WindowNative.GetWindowHandle(this);
+            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            return AppWindow.GetFromWindowId(wndId);
+        }
+
+        private bool SetTitleBarColors()
+        {
+            // Check to see if customization is supported.
+            // The method returns true on Windows 10 since Windows App SDK 1.2,
+            // and on all versions of Windows App SDK on Windows 11.
+            if (AppWindowTitleBar.IsCustomizationSupported())
+            {
+                if (m_AppWindow == null)
+                    return false;
+                AppWindowTitleBar m_TitleBar = m_AppWindow.TitleBar;
+
+                // Set active window colors.
+                // Note: No effect when app is running on Windows 10
+                // because color customization is not supported.
+                m_TitleBar.ButtonForegroundColor = Microsoft.UI.Colors.Gray;
+                return true;
+            }
+            return false;
         }
 
         private void NavigationViewControl_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -101,7 +136,7 @@ namespace JimmyToolbox
 
             if (navItemTag == "settings")
             {
-                //_page = typeof(Views.SettingsPage);
+                _page = typeof(Views.SettingsPage);
             }
             else
             {
@@ -139,6 +174,8 @@ namespace JimmyToolbox
             ("chinese", typeof(Views.ChineseConvertPage)),
             ("gamelauncher", typeof(Views.GameHubPage)),
             ("webbookmarks", typeof(Views.WebPage)),
+            ("shutdown", typeof(Views.ShutDownPage)),
+            ("scripts", typeof(Views.ScriptsPage)),
             ("home", typeof(Views.HomePage))
         };
 
@@ -225,7 +262,7 @@ namespace JimmyToolbox
             //    CoreDispatcher_AcceleratorKeyActivated;
 
             //Window.Current.CoreWindow.PointerPressed += CoreWindow_PointerPressed;
-
+            //NavigationViewControl.Style = (Style)Application.Current.Resources["MainNavigationViewStyle"];
         }
 
         private void On_Navigated(object sender, NavigationEventArgs e)
@@ -242,9 +279,18 @@ namespace JimmyToolbox
             {
                 var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);
 
-                NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems
-                    .OfType<NavigationViewItem>()
-                    .First(n => n.Tag.Equals(item.Tag));
+                try
+                {
+                    NavigationViewControl.SelectedItem = NavigationViewControl.MenuItems
+                        .OfType<NavigationViewItem>()
+                        .First(n => n.Tag.Equals(item.Tag));
+                }
+                catch
+                {
+                    NavigationViewControl.SelectedItem = NavigationViewControl.FooterMenuItems
+                        .OfType<NavigationViewItem>()
+                        .First(n => n.Tag.Equals(item.Tag));
+                }
 
                 //NavigationViewControl.Header =
                 //    ((muxc.NavigationViewItem)NavigationViewControl.SelectedItem)?.Content?.ToString();

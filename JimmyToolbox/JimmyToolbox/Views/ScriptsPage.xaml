@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="JimmyToolbox.Views.ScriptsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:JimmyToolbox.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource LayerFillColorDefaultBrush}"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <Grid Padding="0,0,0,32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="HeaderGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="204" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--<controls:HomePageHeaderImage
+            Grid.RowSpan="2"
+            Height="396"
+            VerticalAlignment="Top" />-->
+                <Image Source="/Assets/CurrencyHeroImage.png" Stretch="UniformToFill" />
+                <Grid Background="Black" Opacity="0.5" />
+                <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+                <StackPanel
+                    Margin="36,0,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <TextBlock
+                        x:Name="smallHeaderSubtitleText"
+                        FontSize="18"
+                        Foreground="White"
+                        Opacity="0.8"
+                        Text="Run CMD or powershell scripts" />
+                    <TextBlock
+                        x:Name="smallHeaderText"
+                        Foreground="White"
+                        Style="{StaticResource TitleLargeTextBlockStyle}"
+                        Text="Scripts Launcher" />
+                </StackPanel>
+            </Grid>
+            <StackPanel
+                Grid.Row="1"
+                Width="320"
+                Margin="36,28,0,0"
+                Padding="24"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{ThemeResource ButtonBackground}"
+                BorderBrush="{ThemeResource MediaTransportControlsBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+                <Grid Margin="0,4,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox
+                        x:Name="ScriptsLocation"
+                        Grid.Column="1"
+                        Height="120"
+                        AcceptsReturn="True"
+                        IsSpellCheckEnabled="False"
+                        PlaceholderText="scripts file location" />
+                </Grid>
+                <Border
+                    Height="1"
+                    Margin="-24,24,-24,0"
+                    HorizontalAlignment="Stretch"
+                    Background="{ThemeResource MediaTransportControlsBorderBrush}" />
+                <ProgressBar
+                    x:Name="ProgressBar1"
+                    Margin="-24,0,-24,24"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Background="Transparent" />
+                <Button
+                    x:Name="RunScriptsButton"
+                    Margin="0,0,0,-4"
+                    Click="RunScriptsButton_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="-4,0,4,0" Text="📽️" />
+                            <TextBlock Text="Run custom location" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Margin="0,12,0,0" Click="Button_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Deploy app.linjimi.com" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Margin="0,8,0,0" Click="Button_Click_1">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Sync app.linjimi.com" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Margin="0,8,0,0" Click="Button_Click_2">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Test YoutubeDownload" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

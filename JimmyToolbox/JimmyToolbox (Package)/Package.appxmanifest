@@ -5,14 +5,15 @@
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  IgnorableNamespaces="uap rescap">
+  xmlns:uap18="http://schemas.microsoft.com/appx/manifest/uap/windows10/18"
+  IgnorableNamespaces="uap rescap uap18">
 
   <Identity
-    Name="47059JimmyLin.abcabc"
-    Publisher="CN=C684D286-A23A-4725-9BEA-70F2E6D11111"
-    Version="3.1.0.0" />
+    Name="47059JimmyLin.39919659E9F27"
+    Publisher="CN="
+    Version="3.1.3.0" />
 
-  <mp:PhoneIdentity PhoneProductId="04f0aa1b-0822-4e6a-a0ec-8c977d8be5bc" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="00000000-0000-0000-0000-000000000000" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ms-resource:AppNames</DisplayName>
@@ -26,16 +27,18 @@
   </Dependencies>
 
   <Resources>
-    <Resource Language="x-generate"/>
+    <!--<Resource Language="x-generate"/>-->
+    <Resource Language="en-US" />
+    <Resource Language="zh-hans" />
   </Resources>
 
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="$targetentrypoint$">
+      EntryPoint="$targetentrypoint$"  >
       <uap:VisualElements
         DisplayName="ms-resource:AppNames"
-        Description="WinUI 3 Version of Jimmy Toolbox"
+        Description="WinUI 3 Version of Jimmy Toolbox, entry point set to $targetentrypoint$  if use fulltrust"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">

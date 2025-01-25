@@ -8,6 +8,144 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource LayerFillColorDefaultBrush}"
     mc:Ignorable="d">
+    <ScrollViewer>
+        <Grid Padding="0,0,0,32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="HeaderGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="204" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--<controls:HomePageHeaderImage
+            Grid.RowSpan="2"
+            Height="396"
+            VerticalAlignment="Top" />-->
+                <Image Source="/Assets/BrowserHeroImage.webp" Stretch="UniformToFill" />
+                <Grid Background="Black" Opacity="0.5" />
+                <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+                <StackPanel
+                    Margin="36,0,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <TextBlock
+                        x:Name="smallHeaderSubtitleText"
+                        FontSize="18"
+                        Foreground="White"
+                        Opacity="0.8"
+                        Text="Provides browser bookmarks management" />
+                    <TextBlock
+                        x:Name="smallHeaderText"
+                        Foreground="White"
+                        Style="{StaticResource TitleLargeTextBlockStyle}"
+                        Text="Website bookmarks" />
+                </StackPanel>
+            </Grid>
+            <StackPanel
+                Grid.Row="1"
+                Width="320"
+                Margin="36,28,0,0"
+                Padding="24"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{ThemeResource ButtonBackground}"
+                BorderBrush="{ThemeResource MediaTransportControlsBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
 
-    <Grid />
+                <TextBlock
+                    Margin="0,0,0,16"
+                    FontWeight="SemiBold"
+                    Text="Open everyday" />
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Width="120"
+                        VerticalAlignment="Center"
+                        Text="Transaction History" />
+                    <Border
+                        Width="1"
+                        Margin="12,0"
+                        VerticalAlignment="Stretch"
+                        Background="{ThemeResource MediaTransportControlsBorderBrush}" />
+                    <Button Margin="4,0,0,0" IsEnabled="False">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="-4,0,4,0" Text="🌍" />
+                                <TextBlock x:Name="WakeTextBlock" Text="Launch" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <StackPanel Margin="0,32,0,0" Orientation="Horizontal">
+                    <TextBlock
+                        Width="120"
+                        VerticalAlignment="Center"
+                        Text="Highlights" />
+                    <Border
+                        Width="1"
+                        Margin="12,0"
+                        VerticalAlignment="Stretch"
+                        Background="{ThemeResource MediaTransportControlsBorderBrush}" />
+                    <Button Margin="4,0,0,0" IsEnabled="False">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="-4,0,4,0" Text="🌍" />
+                                <TextBlock Text="Launch" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <StackPanel Margin="0,32,0,0" Orientation="Horizontal">
+                    <TextBlock
+                        Width="120"
+                        VerticalAlignment="Center"
+                        Text="Reviews" />
+                    <Border
+                        Width="1"
+                        Margin="12,0"
+                        VerticalAlignment="Stretch"
+                        Background="{ThemeResource MediaTransportControlsBorderBrush}" />
+                    <Button Margin="4,0,0,0" IsEnabled="False">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="-4,0,4,0" Text="🌍" />
+                                <TextBlock Text="Launch" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Margin="0,32,0,0" Orientation="Horizontal">
+                    <TextBlock
+                        Width="120"
+                        VerticalAlignment="Center"
+                        Text="Keylol" />
+                    <Border
+                        Width="1"
+                        Margin="12,0"
+                        VerticalAlignment="Stretch"
+                        Background="{ThemeResource MediaTransportControlsBorderBrush}" />
+                    <Button Margin="4,0,0,0" IsEnabled="False">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="-4,0,4,0" Text="🌍" />
+                                <TextBlock Text="Launch" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <Button Margin="0,32,0,0" Click="Button_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="-4,0,4,0" Text="🌍" />
+                            <TextBlock Text="Launch All" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

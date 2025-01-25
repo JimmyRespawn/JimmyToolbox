@@ -105,7 +105,7 @@
                                             HorizontalAlignment="Left"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Provides accurate counts for words, characters."
+                                            Text="Provides accurate counts for words, characters"
                                             TextTrimming="CharacterEllipsis" />
                                     </StackPanel>
                                 </Grid>
@@ -145,7 +145,7 @@
                                             HorizontalAlignment="Left"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Allows a computer to be turned on from sleep mode."
+                                            Text="Allows a computer to be turned on from sleep mode"
                                             TextTrimming="CharacterEllipsis" />
                                     </StackPanel>
                                 </Grid>
@@ -184,7 +184,44 @@
                                             HorizontalAlignment="Left"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Allows you to convert all major world currencies."
+                                            Text="Allows you to convert all major world currencies"
+                                            TextTrimming="CharacterEllipsis" />
+                                    </StackPanel>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                        <Button
+                            Height="72"
+                            Margin="16,0,0,0"
+                            Click="ShutdownTimerButton_Click">
+                            <Button.Content>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Text="🔌" />
+                                    <!--  F08C  -->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,0,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            Style="{StaticResource BodyTextBlockStyle}"
+                                            Text="Shutdown Timer"
+                                            TextTrimming="CharacterEllipsis"
+                                            TextWrapping="NoWrap" />
+                                        <TextBlock
+                                            Margin="0,2,6,0"
+                                            HorizontalAlignment="Left"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="Shutdown computer in specific time"
                                             TextTrimming="CharacterEllipsis" />
                                     </StackPanel>
                                 </Grid>
@@ -223,7 +260,7 @@
                                             HorizontalAlignment="Left"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Conversion between Traditional and Simplified Chinese."
+                                            Text="Conversion between Traditional and Simplified Chinese"
                                             TextTrimming="CharacterEllipsis" />
                                     </StackPanel>
                                 </Grid>
@@ -279,7 +316,7 @@
                                             HorizontalAlignment="Left"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Gamehub for XGP, Steam, Epic games etc."
+                                            Text="Gamehub for XGP, Steam, Epic games etc"
                                             TextTrimming="CharacterEllipsis" />
                                     </StackPanel>
                                 </Grid>
@@ -318,15 +355,16 @@
                                             HorizontalAlignment="Left"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Provides browser bookmarks management."
+                                            Text="Provides browser bookmarks management"
                                             TextTrimming="CharacterEllipsis" />
                                     </StackPanel>
                                 </Grid>
                             </Button.Content>
                         </Button>
                         <Button
+                            x:Name="ScriptsPageButton"
                             Height="72"
-                            Click="CurrentcyConverterButton_Click"
+                            Click="ScriptsPageButton_Click"
                             IsHitTestVisible="False">
                             <Button.Content>
                                 <Grid HorizontalAlignment="Stretch">
@@ -355,44 +393,7 @@
                                             HorizontalAlignment="Left"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Run CMD or powershell scripts."
-                                            TextTrimming="CharacterEllipsis" />
-                                    </StackPanel>
-                                </Grid>
-                            </Button.Content>
-                        </Button>
-                        <Button
-                            Height="72"
-                            Margin="16,0,0,0"
-                            IsHitTestVisible="False">
-                            <Button.Content>
-                                <Grid HorizontalAlignment="Stretch">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="40" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        FontSize="16"
-                                        Text="🔌" />
-                                    <!--  F08C  -->
-                                    <StackPanel
-                                        Grid.Column="1"
-                                        Margin="4,0,0,0"
-                                        VerticalAlignment="Center">
-                                        <TextBlock
-                                            HorizontalAlignment="Left"
-                                            Style="{StaticResource BodyTextBlockStyle}"
-                                            Text="Shutdown Timer"
-                                            TextTrimming="CharacterEllipsis"
-                                            TextWrapping="NoWrap" />
-                                        <TextBlock
-                                            Margin="0,2,6,0"
-                                            HorizontalAlignment="Left"
-                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                            Style="{StaticResource CaptionTextBlockStyle}"
-                                            Text="Shutdown computer in specific time."
+                                            Text="Run CMD or powershell scripts' file"
                                             TextTrimming="CharacterEllipsis" />
                                     </StackPanel>
                                 </Grid>
@@ -440,7 +441,7 @@
                                     HorizontalAlignment="Left"
                                     Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                     Style="{StaticResource CaptionTextBlockStyle}"
-                                    Text="Thoughts on more cool ideas."
+                                    Text="Thoughts on more cool ideas"
                                     TextTrimming="CharacterEllipsis" />
                             </StackPanel>
                         </Grid>

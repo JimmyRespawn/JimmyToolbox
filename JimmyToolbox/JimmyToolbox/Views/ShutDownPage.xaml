@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="JimmyToolbox.Views.ShutDownPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:JimmyToolbox.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource LayerFillColorDefaultBrush}"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <Grid Padding="0,0,0,32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="HeaderGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="204" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Source="/Assets/MiniComputerHeroImage.webp" Stretch="UniformToFill" />
+                <Grid Background="Black" Opacity="0.5" />
+                <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+                <StackPanel
+                    Margin="36,0,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <TextBlock
+                        x:Name="smallHeaderSubtitleText"
+                        FontSize="18"
+                        Foreground="White"
+                        Opacity="0.8"
+                        Text="Shutdown computer in specific time" />
+                    <TextBlock
+                        x:Name="smallHeaderText"
+                        Foreground="White"
+                        Style="{StaticResource TitleLargeTextBlockStyle}"
+                        Text="Shutdown Timer" />
+                </StackPanel>
+            </Grid>
+            <StackPanel
+                Grid.Row="1"
+                Margin="36,28,0,0"
+                Padding="24"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="{ThemeResource ButtonBackground}"
+                BorderBrush="{ThemeResource MediaTransportControlsBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+                <TextBlock
+                    x:Name="OutputBox"
+                    Margin="0,0,0,16"
+                    FontWeight="SemiBold"
+                    Text="Time" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox
+                        x:Name="TimeTypeCB"
+                        Loaded="TimeTypeCB_Loaded"
+                        SelectedIndex="0">
+                        <ComboBoxItem Content="Now" Tag="now" />
+                        <ComboBoxItem Content="In" Tag="in" />
+                        <ComboBoxItem Content="Specific" Tag="at" />
+                    </ComboBox>
+                    <TimePicker
+                        x:Name="InTimePicker"
+                        Margin="12,0,0,0"
+                        ClockIdentifier="24HourClock"
+                        Time="0"
+                        Visibility="Collapsed" />
+                    <TimePicker
+                        x:Name="SpecificTimePicker"
+                        Margin="12,0,0,0"
+                        Visibility="Collapsed" />
+                </StackPanel>
+                <Border
+                    Height="1"
+                    Margin="-24,12"
+                    Background="{ThemeResource MediaTransportControlsBorderBrush}" />
+                <StackPanel Margin="0,12,0,0" Orientation="Horizontal">
+                    <Button Click="ShutDownButton_Click" Content="Shutdown" />
+                    <Button
+                        Margin="12,0,0,0"
+                        Click="Button_Click"
+                        Content="Restart" />
+                    <Button
+                        Margin="12,0,0,0"
+                        Click="CancelButton_Click"
+                        Content="Cancel" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

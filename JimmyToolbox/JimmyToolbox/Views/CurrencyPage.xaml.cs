@@ -1,18 +1,13 @@
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Diagnostics;
 using Windows.Storage;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
+using JimmyToolbox.Services;
 
 namespace JimmyToolbox.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class CurrencyPage : Page
     {
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
@@ -23,15 +18,22 @@ namespace JimmyToolbox.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (localSettings.Values.ContainsKey("currencyFrom"))
-                SelectComboBoxItemByContent(SourceCurrencyComboBox, localSettings.Values["currencyFrom"].ToString());
-            else
-                SourceCurrencyComboBox.SelectedIndex = 0;
+            try
+            {
+                if (localSettings.Values.ContainsKey("currencyFrom"))
+                    SelectComboBoxItemByContent(SourceCurrencyComboBox, localSettings.Values["currencyFrom"].ToString());
+                else
+                    SourceCurrencyComboBox.SelectedIndex = 0;
 
-            if (localSettings.Values.ContainsKey("currencyTo"))
-                SelectComboBoxItemByContent(TargetCurrencyComboBox, localSettings.Values["currencyTo"].ToString());
-            else
-                TargetCurrencyComboBox.SelectedIndex = 0;
+                if (localSettings.Values.ContainsKey("currencyTo"))
+                    SelectComboBoxItemByContent(TargetCurrencyComboBox, localSettings.Values["currencyTo"].ToString());
+                else
+                    TargetCurrencyComboBox.SelectedIndex = 0;
+            }
+            catch
+            {
+
+            }
         }
 
         private async void TransformMoneyButton_Click(object sender, RoutedEventArgs e)
@@ -61,7 +63,7 @@ namespace JimmyToolbox.Views
 
 
                     // 请求汇率数据
-                    decimal conversionRate = 0;//await CurrencyServices.GetConversionRate(sourceCurrency, targetCurrency);
+                    decimal conversionRate = await CurrencyServices.GetConversionRate(sourceCurrency, targetCurrency);
 
                     // 计算人民币结果
                     decimal rmbResult = usdAmount * conversionRate;

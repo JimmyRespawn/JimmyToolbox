@@ -8,6 +8,284 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource LayerFillColorDefaultBrush}"
     mc:Ignorable="d">
-
-    <Grid />
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/SettingsButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style
+                x:Key="SettingsSectionHeaderTextBlockStyle"
+                BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+                TargetType="TextBlock">
+                <Style.Setters>
+                    <Setter Property="Margin" Value="0,28,0,4" />
+                </Style.Setters>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <!--  ManipulationCompleted="Grid_ManipulationCompleted" ManipulationMode="TranslateX"  -->
+        <ScrollViewer
+            HorizontalScrollMode="Disabled"
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Enabled">
+            <StackPanel
+                x:Name="MainPanel"
+                Padding="24,36,8,24"
+                HorizontalAlignment="Stretch">
+                <TextBlock
+                    x:Name="smallHeaderText"
+                    Style="{StaticResource TitleLargeTextBlockStyle}"
+                    Text="Settings" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Appearance" />
+                <Button
+                    x:Name="ThmeButton"
+                    Height="72"
+                    Margin="0,4,16,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    AutomationProperties.Name="change theme"
+                    Click="ThmeButton_Click"
+                    Style="{StaticResource SettingButtonStyle}">
+                    <Button.Content>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="24" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                x:Name="ThemeText"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="🌇" />
+                            <!--  EE49  -->
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    x:Name="Theme"
+                                    x:Uid="Theme"
+                                    HorizontalAlignment="Left"
+                                    Style="{StaticResource BodyTextBlockStyle}"
+                                    Text="Theme"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                                <TextBlock
+                                    Margin="0,2,6,0"
+                                    HorizontalAlignment="Left"
+                                    MaxLines="2"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    TextTrimming="CharacterEllipsis"
+                                    Visibility="Collapsed" />
+                            </StackPanel>
+                            <ComboBox
+                                x:Name="ThemeComboBox"
+                                Grid.Column="2"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                AutomationProperties.Name="Choose Theme"
+                                Background="Transparent"
+                                SelectionChanged="LightThemeCB_SelectionChanged">
+                                <ComboBoxItem x:Name="AutoCBI" Content="Auto" />
+                                <ComboBoxItem Content="Light" />
+                                <ComboBoxItem Content="Dark" />
+                            </ComboBox>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <Button
+                    x:Name="ChangeLanguageButton"
+                    Height="72"
+                    Margin="0,4,16,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    AutomationProperties.Name="Change language"
+                    Click="ChangeLanguageButton_Click"
+                    Style="{StaticResource SettingButtonStyle}">
+                    <Button.Content>
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="24" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="🌏" />
+                            <!--  EE49  -->
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    HorizontalAlignment="Left"
+                                    Style="{StaticResource BodyTextBlockStyle}"
+                                    Text="Change language"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                                <TextBlock
+                                    Margin="0,2,6,0"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    MaxLines="2"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Change app language other than system language"
+                                    TextTrimming="CharacterEllipsis" />
+                            </StackPanel>
+                            <ComboBox
+                                x:Name="LanguageCombobox"
+                                Grid.Column="2"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                AutomationProperties.Name="Change language"
+                                Background="Transparent"
+                                SelectionChanged="ComboBox_SelectionChanged">
+                                <ComboBoxItem x:Uid="Auto" Content="Auto" />
+                                <ComboBoxItem Content="English" />
+                                <ComboBoxItem Content="简体中文" />
+                            </ComboBox>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="About" />
+                <Expander
+                    Margin="0,4,16,0"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    IsExpanded="False">
+                    <Expander.Header>
+                        <Grid Height="72" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="24" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="🎁" />
+                            <!--  EE49  -->
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Text="Acknowledgements"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                                <TextBlock
+                                    Margin="0,2,8,0"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    MaxLines="1"
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Text="Thanks to these open source libraries" />
+                            </StackPanel>
+                        </Grid>
+                    </Expander.Header>
+                    <StackPanel>
+                        <HyperlinkButton
+                            Margin="32,4,0,0"
+                            Content="Faithlift OpenCCNET"
+                            NavigateUri="https://www.nuget.org/packages/Faithlife.OpenCCNET" />
+                        <HyperlinkButton
+                            Margin="32,4,0,0"
+                            Content="Frankfurter"
+                            NavigateUri="https://github.com/lineofflight/frankfurter" />
+                        <HyperlinkButton
+                            Margin="32,4,0,0"
+                            Content="Json.NET"
+                            NavigateUri="https://www.newtonsoft.com/json" />
+                        <HyperlinkButton
+                            Margin="32,4,0,0"
+                            Content="Windows App SDK"
+                            NavigateUri="https://github.com/microsoft/WindowsAppSDK" />
+                        <HyperlinkButton
+                            Margin="32,4,0,0"
+                            Content="WinUI"
+                            NavigateUri="https://github.com/microsoft/microsoft-ui-xaml" />
+                    </StackPanel>
+                </Expander>
+                <Expander
+                    Margin="0,4,16,24"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    IsExpanded="True">
+                    <Expander.Header>
+                        <Grid Height="72" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="24" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="🎛️" />
+                            <!--  EE49  -->
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Text="Jimmy Toolbox"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                                <StackPanel
+                                    Margin="0,2,6,0"
+                                    HorizontalAlignment="Left"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,2,0"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        MaxLines="1"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="Version" />
+                                    <TextBlock
+                                        Name="Version"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        MaxLines="1"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="3.1.0"
+                                        TextTrimming="CharacterEllipsis" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Expander.Header>
+                    <StackPanel>
+                        <HyperlinkButton Margin="32,0,0,0" Click="RateButton_Click">
+                            <TextBlock Text="Rate" />
+                        </HyperlinkButton>
+                        <!--<HyperlinkButton
+                            Margin="32,4,0,0"
+                            Content="Source code"
+                            NavigateUri="https://github.com/jimmyrespawn/jimmytoolbox" />-->
+                        <HyperlinkButton
+                            Name="PrivacyPolicyButton"
+                            x:Uid="PrivacyPolicy"
+                            Margin="32,4,0,0"
+                            HorizontalAlignment="Left"
+                            AutomationProperties.Name="Privacy Policy"
+                            Content="Privacy policy"
+                            NavigateUri="https://app.linjimi.com/private/jimmytoolbox" />
+                        <Border
+                            Height="1"
+                            Margin="-16,9,-16,16"
+                            HorizontalAlignment="Stretch"
+                            Background="{ThemeResource MediaTransportControlsBorderBrush}" />
+                        <TextBlock
+                            Margin="24,0,0,0"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                            Style="{StaticResource CaptionTextBlockStyle}"
+                            Text="🌃 Proudly made in Shanghai" />
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </Page>

@@ -18,6 +18,7 @@ namespace JimmyToolbox.Views
 #if DEBUG
             GameLauncherButton.IsHitTestVisible = true;
             WebpageButton.IsHitTestVisible = true;
+            ScriptsPageButton.IsHitTestVisible = true;
 #endif
         }
 
@@ -61,6 +62,16 @@ namespace JimmyToolbox.Views
         private void WebpageButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(WebPage));
+        }
+
+        private void ShutdownTimerButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ShutDownPage));
+        }
+
+        private void ScriptsPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ScriptsPage));
         }
     }
 }
