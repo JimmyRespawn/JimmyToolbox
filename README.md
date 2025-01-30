@@ -19,6 +19,8 @@ Microsoft store: https://www.microsoft.com/store/productId/9WZDNCRDXTF1
 
 Offline package: https://github.com/JimmyRespawn/JimmyToolbox/releases
 
+Winget: `Winget install 9WZDNCRDXTF1` 
+
 # Compile
 Build environment: Visual Studio 2022 
 Target version: Windows 11 21h2(22000)+  
